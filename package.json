@@ -1,0 +1,52 @@
+{
+  "name": "great-uri-template",
+  "version": "0.0.1",
+  "description": "URI template format for Integreat, inspired by RFC 6570",
+  "author": "Kjell-Morten Bratsberg Thorsen <post@kjellmorten.no> (http://kjellmorten.no/)",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "npm run lint && NODE_ENV=test nyc --reporter=text-summary ava",
+    "dev": "NODE_ENV=test ava --watch",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "nyc:report": "nyc report",
+    "lint": "standard"
+  },
+  "ava": {
+    "files": [
+      "lib/**/*-test.js"
+    ],
+    "source": [
+      "lib/**/!(*-test).js"
+    ],
+    "babel": {
+      "presets": [
+        "babel-preset-node7"
+      ]
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "**/*-test.js"
+    ]
+  },
+  "engines": {
+    "node": "7.7.x",
+    "npm": ">= 4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjellmorten/great-uri-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kjellmorten/great-uri-template/issues"
+  },
+  "homepage": "https://github.com/kjellmorten/great-uri-template#readme",
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-preset-node7": "^1.5.0",
+    "coveralls": "^2.13.1",
+    "standard": "^10.0.3"
+  }
+}
