@@ -70,3 +70,27 @@ parameter as an array of three values):
 - Label Expansion: `{.var}` -> `.value1.value2.value3`
 - Path Segments Expansion: `{/var}` -> `/value1/value2/value3`
 - Path-Style Paramter Expansion: `{;var}` -> `;value1;value2;value3`
+
+## Filter functions
+Functions may be added to a parameter after a pipe character, to filter or
+modify the parameter value before it is expanded in the uri. This is an
+extension to RFC 6570.
+
+E.g., with the `section` parameter set to `news`, the template segment
+`{section|append(_archive)}` will expand to `news_archive`, as the filter
+function `append` appends the string within the parentheses to the parameter
+value. If this was an optional parameter and the value was empty, nothing would
+be appended.
+
+Several functions may be chained, where the result of the first is given as the
+value for the next, etc.
+
+## Max length
+RFC 6570 specifies a 'prefix modifier', that limits the length of the value, by
+suffixing a parameter with a colon and the max number of characters. This is
+implemented in Integreat URI Template through the `max` filter function, but the
+RFC 6570 syntax is available as a handy shortcut.
+
+Example: With the `section` parameter set to `entertainment`, the template
+segment `{section:3}` will expand to `ent`. This is equivalent to
+`{section|max(3)}`.
