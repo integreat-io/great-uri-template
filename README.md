@@ -22,6 +22,12 @@ console.log(uri)
 //--> http://example.com/entry/ent1?first=0&max=20
 ```
 
+## A word on encoding
+The RFC 6570 standard is very specific on encoding of the different parts of the
+url. Integreat URI Template simply uses JavaScript's `encodeURI` method, which
+will do in most cases, and for most part are pretty close to the RFC 6570
+specification.
+
 ## Parameter replacement
 The simplest template features parameter replacements. Parameters are indicated
 in the template by putting parameter names in curly brackets: `{id}`.
