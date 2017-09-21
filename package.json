@@ -15,9 +15,11 @@
   },
   "ava": {
     "files": [
+      "tests/**/*-test.js",
       "lib/**/*-test.js"
     ],
     "source": [
+      "index.js",
       "lib/**/!(*-test).js"
     ],
     "babel": {
