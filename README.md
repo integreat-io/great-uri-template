@@ -69,7 +69,9 @@ parameter as an array of three values):
 - Fragment Expansion: `{#var}` -> `#value1,value2,value3`
 - Label Expansion: `{.var}` -> `.value1.value2.value3`
 - Path Segments Expansion: `{/var}` -> `/value1/value2/value3`
-- Path-Style Paramter Expansion: `{;var}` -> `;value1;value2;value3`
+- Path-Style Paramter Expansion: `{;var}` -> `;var=value1,value2,value3`
+
+Note: For Label and Path Segment Expansion, the 'explode' flag is on by default.
 
 ## Filter functions
 Functions may be added to a parameter after a pipe character, to filter or
