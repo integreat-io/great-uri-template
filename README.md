@@ -172,6 +172,18 @@ const template = 'http://example.com/{section|wrap(_, _)}{?ids|wrap([, ", ", ])}
 //--> http://example.com/_news_/?ids=["ent1", "ent2", "ent5"]
 ```
 
+### `map(from=to[, from=to[, ...]])`
+Will map the given value to a replacement according to the `from=to` pairs
+given as arguments to the `map` function. If no match is found, the value is
+not replaced.
+
+```
+const params = {type: 'entry'}
+const template = 'http://example.com/{type|map(article=articles, entry=entries)}'
+...
+//--> http://example.com/entries
+```
+
 ## Max length
 RFC 6570 specifies a 'prefix modifier', that limits the length of the value, by
 suffixing a parameter with a colon and the max number of characters. This is
