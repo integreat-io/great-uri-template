@@ -19,7 +19,7 @@ const compiled = greatUri.compile(template)
 const uri = greatUri.generate(compiled, params)
 
 console.log(uri)
-// -> http://example.com/entry/ent1?first=0&max=20
+//--> http://example.com/entry/ent1?first=0&max=20
 ```
 
 ## Parameter replacement
@@ -86,6 +86,85 @@ be appended.
 
 Several functions may be chained, where the result of the first is given as the
 value for the next, etc.
+
+For filter functions without arguments, parentheses are optional.
+
+### `append(string)`
+Append the given string to the value. Will not touch null values or empty
+strings.
+
+Example:
+```
+const params = {section: 'news'}
+const template = 'http://example.com/{section|append(_archive)}'
+...
+//--> http://example.com/news_archive
+```
+
+### `prepend(string)`
+Prepend the given string to the value. Will not touch null values or empty
+strings.
+
+Example:
+```
+const params = {section: 'news'}
+const template = 'http://example.com/{section|prepend(local_)}'
+...
+//--> http://example.com/local_news
+```
+
+### `lower()`
+Transform the given value to lower case.
+
+Example:
+```
+const params = {section: 'News'}
+const template = 'http://example.com/{section|lower}'
+...
+//--> http://example.com/news
+```
+
+### `upper()`
+Transform the given value to upper case.
+
+Example:
+```
+const params = {section: 'News'}
+const template = 'http://example.com/{?section|upper}'
+...
+//--> http://example.com/?section=NEWS
+```
+
+### `max(length)`
+Cut the value to a string of the given length. If length is higher than the
+number of characters in value, value is left untouched.
+
+Example:
+```
+const params = {section: 'entertainment'}
+const template = 'http://example.com/{section|max(3)}'
+...
+//--> http://example.com/ent
+```
+
+### `wrap(outerLeft, [innerLeft, innerRight,] outerRight)`
+Wrap the value in the given strings.
+
+The value is wrapped in `outerLeft` and `outerRight`. If the value is an array,
+it is joined with commas, before it is wrapped.
+
+If `innerLeft` and `innerRight` is specified, each element in array will be
+wrapped in these, before the entire list is wrapped in `outerLeft` and
+`outerRight`. A non-array value is wrapped in all four the same way an array
+with one element would.
+
+Example:
+```
+const params = {section: 'news', ids=['ent1', 'ent2', ent5]}
+const template = 'http://example.com/{section|wrap(_, _)}{?ids|wrap([, ", ", ])}'
+...
+//--> http://example.com/_news_/?ids=["ent1", "ent2", "ent5"]
+```
 
 ## Max length
 RFC 6570 specifies a 'prefix modifier', that limits the length of the value, by
