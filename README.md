@@ -63,9 +63,9 @@ be excluded from the resulting uri. With the `type` parameter set to `entry` and
 an undefined `id` parameter, this template would expand to the uri
 `http://example.com/entry/`.
 
-To include curly brackets in the url, without replacement, escape the opening
-bracket: `?brackets=\\{}`. (Remember double escape characters to escape the
-escape character in JavaScript. :)
+To include curly brackets in the url, without replacement, simply escape them:
+`?brackets=\\{\\}`. (Remember double escape characters to escape the
+escape character in JavaScript.)
 
 ### Query parameters
 
