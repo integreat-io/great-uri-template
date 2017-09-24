@@ -16,7 +16,7 @@ test('should generate uri with filter functions', (t) => {
 test('should generate uri with escaped characters in filter args', (t) => {
   const template = 'http://example.com/{?keys=ids|wrap([, ", ", \\,\\{\\}])}'
   const params = {ids: ['ent1', 'ent5']}
-  const expected = 'http://example.com/?keys=%5B%22ent1%22,%22ent5%22,%7B%7D%5D'
+  const expected = 'http://example.com/?keys=%5B%22ent1%22%2C%22ent5%22%2C%7B%7D%5D'
 
   const compiled = compile(template)
   const uri = generate(compiled, params)

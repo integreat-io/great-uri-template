@@ -45,3 +45,25 @@ test('should keep escaped curly brackets', (t) => {
 
   t.is(uri, expected)
 })
+
+test('should escape reserved characters in params', (t) => {
+  const template = 'http://example.com/{section}/{?url}'
+  const params = {section: 'health/wellness', url: 'http://test-it.com/'}
+  const expected = 'http://example.com/health%2Fwellness/?url=http%3A%2F%2Ftest-it.com%2F'
+
+  const compiled = compile(template)
+  const uri = generate(compiled, params)
+
+  t.is(uri, expected)
+})
+
+test('should not escape reserved characters in fragments', (t) => {
+  const template = 'http://example.com/{#section}'
+  const params = {section: 'health/wellness'}
+  const expected = 'http://example.com/#health/wellness'
+
+  const compiled = compile(template)
+  const uri = generate(compiled, params)
+
+  t.is(uri, expected)
+})

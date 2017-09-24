@@ -71,7 +71,7 @@ escape character in JavaScript.)
 
 Including several parameters in the query string is such a common case, that it
 has its own modifier. Prefixing a parameter with a question mark creates a
-query component, where several parameters may be included, seperated by a comma.
+query component, where several parameters may be included, separated by a comma.
 A query component will be expanded to a key-value list, prefixed by a question
 mark, and delimited by ampersands.
 
@@ -100,8 +100,17 @@ parameter as an array of three values):
 - Label Expansion: `{.var}` -> `.value1.value2.value3`
 - Path Segments Expansion: `{/var}` -> `/value1/value2/value3`
 - Path-Style Paramter Expansion: `{;var}` -> `;var=value1,value2,value3`
+- Reserved Expansion: `{+var}` -> `value1,value2,value3`
 
-Note: For Label and Path Segment Expansion, the 'explode' flag is on by default.
+For Label and Path Segment Expansion, the 'explode' flag is on by default.
+
+When expanding parameters, all uri reserved characters are encoded, except for
+Fragment and Reserved expansion. With a parameter `path` set to
+`sections/news`, the template `http://example.com/{path}` will result
+in the uri `http://example.com/sections%2Fnews`. So to expand `path` as
+an actual path, use the template `http://example.com/{+path}`, which will
+expand to `http://example.com/sections/news`. See [Variable Expansion](https://tools.ietf.org/html/rfc6570#section-3.2.1) in RFC 6570 for
+more on encoding.
 
 ### Filter functions
 
