@@ -18,15 +18,10 @@
       "tests/**/*-test.js",
       "lib/**/*-test.js"
     ],
-    "source": [
+    "sources": [
       "index.js",
       "lib/**/!(*-test).js"
-    ],
-    "babel": {
-      "presets": [
-        "babel-preset-node7"
-      ]
-    }
+    ]
   },
   "nyc": {
     "exclude": [
@@ -46,10 +41,9 @@
   },
   "homepage": "https://github.com/kjellmorten/great-uri-template#readme",
   "devDependencies": {
-    "ava": "^0.22.0",
-    "babel-preset-node7": "^1.5.0",
-    "coveralls": "^2.13.1",
-    "nyc": "^11.2.1",
-    "standard": "^10.0.3"
+    "ava": "^2.3.0",
+    "coveralls": "^3.0.6",
+    "nyc": "^14.1.1",
+    "standard": "^14.1.0"
   }
 }
