@@ -14,13 +14,10 @@
     "lint": "standard"
   },
   "ava": {
+    "babel": true,
     "files": [
       "tests/**/*-test.js",
       "lib/**/*-test.js"
-    ],
-    "sources": [
-      "index.js",
-      "lib/**/!(*-test).js"
     ]
   },
   "nyc": {
@@ -41,9 +38,10 @@
   },
   "homepage": "https://github.com/kjellmorten/great-uri-template#readme",
   "devDependencies": {
-    "ava": "^2.3.0",
-    "coveralls": "^3.0.6",
-    "nyc": "^14.1.1",
-    "standard": "^14.1.0"
+    "@ava/babel": "^1.0.1",
+    "ava": "^3.5.2",
+    "coveralls": "^3.0.11",
+    "nyc": "^15.0.0",
+    "standard": "^14.3.3"
   }
 }
