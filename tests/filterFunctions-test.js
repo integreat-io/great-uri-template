@@ -23,3 +23,14 @@ test('should generate uri with escaped characters in filter args', (t) => {
 
   t.is(uri, expected)
 })
+
+test('should generate uri with date filter functions', (t) => {
+  const template = 'http://example.com/all{?updatedAfter|date(DD/MM/YYYY HH:mm:ss)}'
+  const params = { updatedAfter: new Date('2020-03-20T18:43:11Z') }
+  const expected = 'http://example.com/all?updatedAfter=20%2F03%2F2020%2019%3A43%3A11'
+
+  const compiled = compile(template)
+  const uri = generate(compiled, params)
+
+  t.is(uri, expected)
+})

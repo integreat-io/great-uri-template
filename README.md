@@ -153,6 +153,19 @@ const template = 'http://example.com/{section|prepend(local_)}'
 //--> http://example.com/local_news
 ```
 
+#### `date(format)`
+Formats a date according to the given date format string.
+Uses `date-and-time` under the hood, so refer to
+[their documentation](https://github.com/knowledgecode/date-and-time#formatdateobj-formatstring-utc).
+
+”Example:
+```
+const params = {updatedAfter: new Date('2020-03-19T14:08:44Z')}
+const template = 'http://example.com/all{?updatedAfter|date(DD/MM/YYYY HH:mm:ss)}'
+...
+//--> http://example.com/all?updatedAfter=20%2F03%2F2020%2019%3A43%3A11
+```
+
 #### `lower()`
 Transform the given value to lower case.
 
