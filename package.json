@@ -39,10 +39,10 @@
   "homepage": "https://github.com/kjellmorten/great-uri-template#readme",
   "devDependencies": {
     "@ava/babel": "^1.0.1",
-    "ava": "^3.5.2",
-    "coveralls": "^3.0.11",
-    "nyc": "^15.0.0",
-    "standard": "^14.3.3"
+    "ava": "^3.11.1",
+    "coveralls": "^3.1.0",
+    "nyc": "^15.1.0",
+    "standard": "^14.3.4"
   },
   "dependencies": {
     "date-and-time": "^0.13.1"
