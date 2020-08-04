@@ -3,13 +3,13 @@
 Template format loosely based on the
 [RFC 6570 standard](https://tools.ietf.org/html/rfc6570), with some
 omissions and some extra features needed for
-[Integreat](https://github.com/kjellmorten/integreat). A main feature is the
+[Integreat](https://github.com/integreat-io/integreat). A main feature is the
 compilation of the string-based template format to a more runtime friendly
 format.
 
-[![Build Status](https://travis-ci.org/kjellmorten/great-uri-template.svg?branch=master)](https://travis-ci.org/kjellmorten/great-uri-template)
-[![Coverage Status](https://coveralls.io/repos/github/kjellmorten/great-uri-template/badge.svg)](https://coveralls.io/github/kjellmorten/great-uri-template)
-[![Dependency Status](https://dependencyci.com/github/kjellmorten/great-uri-template/badge)](https://dependencyci.com/github/kjellmorten/great-uri-template)
+[![Build Status](https://travis-ci.org/integreat-io/great-uri-template.svg?branch=master)](https://travis-ci.org/integreat-io/great-uri-template)
+[![Coverage Status](https://coveralls.io/repos/github/integreat-io/great-uri-template/badge.svg)](https://coveralls.io/github/integreat-io/great-uri-template)
+[![Dependency Status](https://dependencyci.com/github/integreat-io/great-uri-template/badge)](https://dependencyci.com/github/integreat-io/great-uri-template)
 
 ## Getting started
 
@@ -250,12 +250,12 @@ segment `{section:3}` will expand to `ent`. This is equivalent to
 ## Contributing
 
 Please read
-[CONTRIBUTING](https://github.com/kjellmorten/great-uri-template/blob/master/CONTRIBUTING.md)
+[CONTRIBUTING](https://github.com/integreat-io/great-uri-template/blob/master/CONTRIBUTING.md)
 for details on our code of conduct, and the process for submitting pull
 requests.
 
 ## License
 
 This project is licensed under the ISC License - see the
-[LICENSE](https://github.com/kjellmorten/great-uri-template/blob/master/LICENSE)
+[LICENSE](https://github.com/integreat-io/great-uri-template/blob/master/LICENSE)
 file for details.
