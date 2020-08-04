@@ -155,8 +155,13 @@ const template = 'http://example.com/{section|prepend(local_)}'
 
 #### `date(format)`
 Formats a date according to the given date format string.
+
 Uses `date-and-time` under the hood, so refer to
 [their documentation](https://github.com/knowledgecode/date-and-time#formatdateobj-formatstring-utc).
+
+In addition, two custom formats are available: `ms-epoc` and `s-epoc`. They
+format the date as number of microseconds or seconds since 1970-01-01. For
+seconds, microsencods are rounded off to nearest second.
 
 ”Example:
 ```

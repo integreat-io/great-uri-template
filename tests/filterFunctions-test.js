@@ -37,3 +37,16 @@ test('should generate uri with date filter functions', (t) => {
 
   t.is(uri, expected)
 })
+
+test('should generate uri with date as seconds since epoc', (t) => {
+  const template = 'http://example.com/all{?since=updatedAfter|date(s-epoc)?,until=updatedBefore|date(YYYY-MM-DD)?}'
+  const params = {
+    updatedAfter: new Date('2020-03-20T18:43:11.875Z')
+  }
+  const expected = 'http://example.com/all?since=1584729792'
+
+  const compiled = compile(template)
+  const uri = generate(compiled, params)
+
+  t.is(uri, expected)
+})
