@@ -16,6 +16,7 @@
     "test:watch": "npm run dev",
     "dev": "node --import tsx --test --enable-source-maps --test-reporter node-test-reporter --watch 'src/**/*.test.ts' || exit 0",
     "build": "tsc",
+    "prepublishOnly": "npm run build",
     "lint": "eslint src",
     "format": "prettier src/**/*.ts",
     "typecheck": "tsc --noEmit --strict",
