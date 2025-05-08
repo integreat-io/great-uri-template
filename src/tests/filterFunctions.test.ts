@@ -32,7 +32,7 @@ test('should generate uri with escaped characters in filter args', () => {
 
 test('should generate uri with date filter functions', () => {
   const template =
-    'http://example.com/all{?since=updatedAfter|date(DD/MM/YYYY HH:mm:ss)?,until=updatedBefore|date(YYYY-MM-DD)?}'
+    'http://example.com/all{?since=updatedAfter|date(dd/MM/yyyy HH:mm:ss)?,until=updatedBefore|date(yyyy-MM-dd)?}'
   const params = {
     updatedAfter: new Date('2020-03-20T18:43:11Z'),
     updatedBefore: new Date('2020-03-22T21:00:00Z'),

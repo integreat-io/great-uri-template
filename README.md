@@ -7,10 +7,6 @@ omissions and some extra features needed for
 compilation of the string-based template format to a more runtime friendly
 format.
 
-[![Build Status](https://travis-ci.org/integreat-io/great-uri-template.svg?branch=master)](https://travis-ci.org/integreat-io/great-uri-template)
-[![Coverage Status](https://coveralls.io/repos/github/integreat-io/great-uri-template/badge.svg)](https://coveralls.io/github/integreat-io/great-uri-template)
-[![Dependency Status](https://dependencyci.com/github/integreat-io/great-uri-template/badge)](https://dependencyci.com/github/integreat-io/great-uri-template)
-
 > [!NOTE]
 > This package will not be developed any further, but is kept as it is still in
 > use. We update dependencies etc. from time to time, but have no plans beyond
@@ -31,6 +27,7 @@ npm install great-uri-template
 ```
 
 Example of use:
+
 ```
 import greatUri from 'great-uri-template'
 
@@ -135,10 +132,12 @@ value for the next, etc.
 For filter functions without arguments, parentheses are optional.
 
 #### `append(string)`
+
 Append the given string to the value. Will not touch null values or empty
 strings.
 
 Example:
+
 ```
 const params = {section: 'news'}
 const template = 'http://example.com/{section|append(_archive)}'
@@ -147,10 +146,12 @@ const template = 'http://example.com/{section|append(_archive)}'
 ```
 
 #### `prepend(string)`
+
 Prepend the given string to the value. Will not touch null values or empty
 strings.
 
 Example:
+
 ```
 const params = {section: 'news'}
 const template = 'http://example.com/{section|prepend(local_)}'
@@ -159,16 +160,22 @@ const template = 'http://example.com/{section|prepend(local_)}'
 ```
 
 #### `date(format)`
+
 Formats a date according to the given date format string.
 
-Uses `date-and-time` under the hood, so refer to
-[their documentation](https://github.com/knowledgecode/date-and-time#formatdateobj-formatstring-utc).
+Uses `luxon` under the hood, so refer to
+[their documentation](https://moment.github.io/luxon/#/formatting?id=table-of-tokens).
 
-In addition, two custom formats are available: `ms-epoc` and `s-epoc`. They
-format the date as number of microseconds or seconds since 1970-01-01. For
-seconds, microsencods are rounded off to nearest second.
+In addition, three custom formats are available:
+
+- `ms-epoc`: The number of microseconds since 1970-01-01.
+- `s-epoc`. The number of seconds since 1970-01-01, rounded to the nearest
+  second.
+- `UTC`: The date and time in UTC time zone and the full ISO format, like
+  `'2025-05-08T14:26:31.000Z'`.
 
 ”Example:
+
 ```
 const params = {updatedAfter: new Date('2020-03-19T14:08:44Z')}
 const template = 'http://example.com/all{?updatedAfter|date(DD/MM/YYYY HH:mm:ss)}'
@@ -177,9 +184,11 @@ const template = 'http://example.com/all{?updatedAfter|date(DD/MM/YYYY HH:mm:ss)
 ```
 
 #### `lower()`
+
 Transform the given value to lower case.
 
 Example:
+
 ```
 const params = {section: 'News'}
 const template = 'http://example.com/{section|lower}'
@@ -188,9 +197,11 @@ const template = 'http://example.com/{section|lower}'
 ```
 
 #### `upper()`
+
 Transform the given value to upper case.
 
 Example:
+
 ```
 const params = {section: 'News'}
 const template = 'http://example.com/{?section|upper}'
@@ -199,10 +210,12 @@ const template = 'http://example.com/{?section|upper}'
 ```
 
 #### `max(length)`
+
 Cut the value to a string of the given length. If length is higher than the
 number of characters in value, value is left untouched.
 
 Example:
+
 ```
 const params = {section: 'entertainment'}
 const template = 'http://example.com/{section|max(3)}'
@@ -211,6 +224,7 @@ const template = 'http://example.com/{section|max(3)}'
 ```
 
 #### `wrap(outerLeft, [innerLeft, innerRight,] outerRight)`
+
 Wrap the value in the given strings.
 
 The value is wrapped in `outerLeft` and `outerRight`. If the value is an array,
@@ -222,6 +236,7 @@ wrapped in these, before the entire list is wrapped in `outerLeft` and
 with one element would.
 
 Example:
+
 ```
 const params = {section: 'news', ids=['ent1', 'ent2', ent5]}
 const template = 'http://example.com/{section|wrap(_, _)}{?ids|wrap([, ", ", ])}'
@@ -230,6 +245,7 @@ const template = 'http://example.com/{section|wrap(_, _)}{?ids|wrap([, ", ", ])}
 ```
 
 #### `map(from=to[, from=to[, ...]])`
+
 Will map the given value to a replacement according to the `from=to` pairs
 given as arguments to the `map` function. If no match is found, the value is
 not replaced.

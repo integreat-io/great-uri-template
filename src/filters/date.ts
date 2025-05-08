@@ -1,4 +1,4 @@
-import dateTime from 'date-and-time'
+import { DateTime } from 'luxon'
 import type { FilterValue } from '../types.js'
 
 const isDatish = (value: FilterValue | Date): value is Date =>
@@ -21,11 +21,13 @@ export default function date(
 
   if (date instanceof Date && !Number.isNaN(date.getTime())) {
     if (typeof format === 'string' && format !== '') {
-      if (format.endsWith('s-epoc')) {
+      if (format === 'UTC') {
+        return DateTime.fromJSDate(date).setZone('utc').toISO()
+      } else if (format.endsWith('s-epoc')) {
         const ms = date.getTime()
         return format === 'ms-epoc' ? String(ms) : String(Math.round(ms / 1000))
       } else {
-        return dateTime.format(date, format)
+        return DateTime.fromJSDate(date).toFormat(format)
       }
     } else {
       return date.toISOString()

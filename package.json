@@ -35,10 +35,11 @@
   },
   "homepage": "https://github.com/kjellmorten/great-uri-template#readme",
   "dependencies": {
-    "date-and-time": "^3.6.0"
+    "luxon": "^3.6.1"
   },
   "devDependencies": {
     "@integreat/ts-dev-setup": "^8.1.2",
+    "@types/luxon": "^3.6.2",
     "@types/node": "^22.15.16"
   }
 }
