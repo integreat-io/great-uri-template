@@ -1,6 +1,5 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import type { FilterValue } from '../types.js'
 
 import date from './date.js'
 
@@ -65,7 +64,7 @@ test('should treat date that has lost its inheritance as date', () => {
   const format = 'yyyy/MM/dd HH:mm:ss'
   const expected = '2020/03/18 20:59:03'
 
-  const ret = date(value as unknown as FilterValue, format) // Force type, as we are giving it something invalid
+  const ret = date(value, format)
 
   assert.equal(ret, expected)
 })

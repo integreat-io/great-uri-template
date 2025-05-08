@@ -1,9 +1,7 @@
-import {
+import type {
   CompiledTemplate,
-  FilterValue,
-  type CompiledSegment,
-  type CompiledTemplateList,
-  type Params,
+  CompiledSegment,
+  CompiledTemplateList,
 } from './types.js'
 
 function encode(value: string | number, doEncodeReserved: boolean) {
@@ -15,7 +13,12 @@ function encode(value: string | number, doEncodeReserved: boolean) {
 }
 
 const expandParam =
-  (params: Params, useKeys = false, delimiter = ',', encodeReserved = true) =>
+  (
+    params: Record<string, unknown>,
+    useKeys = false,
+    delimiter = ',',
+    encodeReserved = true,
+  ) =>
   ({
     param,
     key,
@@ -42,7 +45,7 @@ const expandParam =
 
     // Filters
     if (filters) {
-      value = filters.reduce<FilterValue>((value, filter) => {
+      value = filters.reduce<unknown>((value, filter) => {
         if (typeof filter.function === 'function') {
           const args = filter.args || []
           return filter.function(value, ...args)
@@ -64,14 +67,19 @@ const expandParam =
     const theKey = key || param
     if (useKeys && theKey) {
       return `${encode(theKey, encodeReserved)}=${value}`
+    } else if (typeof value === 'string') {
+      return value
     } else if (typeof value === 'number') {
       return String(value)
     } else {
-      return value
+      return null
     }
   }
 
-const expandList = (params: Params, list: CompiledTemplateList) => {
+const expandList = (
+  params: Record<string, unknown>,
+  list: CompiledTemplateList,
+) => {
   const modifier = list[0] ?? ''
   let useKeys = false
   let delimiter = ','
@@ -107,7 +115,7 @@ const expandList = (params: Params, list: CompiledTemplateList) => {
 
 export default function generate(
   compiledTemplate: CompiledTemplate | null,
-  params: Params = {},
+  params: Record<string, unknown> = {},
 ): string {
   if (!compiledTemplate) {
     return ''

@@ -1,24 +1,4 @@
-export type FilterValue =
-  | string
-  | number
-  | (string | number)[]
-  | null
-  | undefined
-
-export type ParamValue =
-  | string
-  | number
-  | Date
-  | (string | number)[]
-  | null
-  | undefined
-
-export type Params = Record<string, ParamValue>
-
-export type FilterFunction = (
-  value: FilterValue,
-  ...args: string[]
-) => FilterValue
+export type FilterFunction = (value: unknown, ...args: string[]) => unknown
 
 export interface CompiledFilter {
   function: FilterFunction

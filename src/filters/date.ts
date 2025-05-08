@@ -1,17 +1,13 @@
 import { DateTime } from 'luxon'
-import type { FilterValue } from '../types.js'
 
-const isDatish = (value: FilterValue | Date): value is Date =>
+const isDatish = (value: unknown): value is Date =>
   typeof value === 'object' &&
   value !== null &&
   !Array.isArray(value) &&
   typeof (value as Date).getTime === 'function' &&
   typeof (value as Date).toISOString === 'function'
 
-export default function date(
-  value: FilterValue | Date,
-  format?: string,
-): FilterValue {
+export default function date(value: unknown | Date, format?: string): unknown {
   let date
   if (typeof value === 'string' || typeof value === 'number') {
     date = new Date(value)

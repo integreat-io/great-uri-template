@@ -1,9 +1,4 @@
-import type { FilterValue } from '../types.js'
-
-export default function map(
-  value: FilterValue,
-  ...mappings: string[]
-): FilterValue {
+export default function map(value: unknown, ...mappings: string[]): unknown {
   if (typeof value !== 'string') {
     return value
   }

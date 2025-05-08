@@ -1,9 +1,7 @@
-import type { FilterValue } from '../types.js'
-
 /**
  * Returns the value in lower case.
  */
-export default function lower(value: FilterValue): FilterValue {
+export default function lower(value: unknown): unknown {
   if (value === null || value === undefined) {
     return value
   }

@@ -1,6 +1,5 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import type { FilterValue } from '../types.js'
 
 import upper from './upper.js'
 
@@ -25,7 +24,7 @@ test('should not upper case null', () => {
 test('should coerce to string', () => {
   const value = {}
 
-  const ret = upper(value as FilterValue)
+  const ret = upper(value)
 
   assert.equal(ret, '[OBJECT OBJECT]')
 })

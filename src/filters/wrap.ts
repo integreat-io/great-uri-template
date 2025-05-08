@@ -1,5 +1,3 @@
-import type { FilterValue } from '../types.js'
-
 /**
  * Wrap the value with the strings provided in args.
  * If the value is an array, two parts will wrap the entire result, while four
@@ -9,10 +7,7 @@ import type { FilterValue } from '../types.js'
  * @param {string[]} parts - Array of strings of the format `[outer_left, [inner_left, inner_right,] outer_right]`
  * @returns {string} The wrapped value
  */
-export default function wrap(
-  value: FilterValue,
-  ...parts: string[]
-): FilterValue {
+export default function wrap(value: unknown, ...parts: string[]): unknown {
   if (
     value === null ||
     value === undefined ||

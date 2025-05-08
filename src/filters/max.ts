@@ -1,5 +1,3 @@
-import type { FilterValue } from '../types.js'
-
 /**
  * Return the `length` first characters of `value`. If `length` is higher
  * than the number of characters in value, value is returned as is.
@@ -7,10 +5,7 @@ import type { FilterValue } from '../types.js'
  * @param {integer} length - The max number of characers to return
  * @returns {string} A string of maximum `length` characters
  */
-export default function max(
-  value: FilterValue,
-  length: number | string,
-): FilterValue {
+export default function max(value: unknown, length: number | string): unknown {
   if (typeof length === 'string') {
     length = Number.parseInt(length)
   }

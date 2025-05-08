@@ -1,6 +1,5 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import type { FilterValue } from '../types.js'
 
 import max from './max.js'
 
@@ -46,7 +45,7 @@ test('should coerce value to a string', () => {
   const value = {}
   const length = 3
 
-  const ret = max(value as FilterValue, length)
+  const ret = max(value, length)
 
   assert.equal(ret, '[ob')
 })

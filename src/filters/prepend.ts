@@ -1,14 +1,9 @@
-import type { FilterValue } from '../types.js'
-
 /**
  * Prepend the given string to the value, unless the value is empty.
  * @param {string} value - The value to prepend to
  * @returns {string} The prepended result
  */
-export default function prepend(
-  value: FilterValue,
-  arg: string | null,
-): FilterValue {
+export default function prepend(value: unknown, arg: string | null): unknown {
   if (typeof value === 'number') {
     value = String(value)
   }

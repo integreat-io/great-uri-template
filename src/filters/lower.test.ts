@@ -1,6 +1,5 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import type { FilterValue } from '../types.js'
 
 import lower from './lower.js'
 
@@ -25,7 +24,7 @@ test('should not lower case null', () => {
 test('should coerce to string', () => {
   const value = {}
 
-  const ret = lower(value as FilterValue)
+  const ret = lower(value)
 
   assert.equal(ret, '[object object]')
 })
