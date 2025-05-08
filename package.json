@@ -4,30 +4,27 @@
   "description": "URI template format for Integreat, loosely based on RFC 6570",
   "author": "Kjell-Morten Bratsberg Thorsen <post@kjellmorten.no> (http://kjellmorten.no/)",
   "license": "ISC",
-  "main": "index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "node server.js",
-    "test": "npm run lint && NODE_ENV=test nyc --reporter=text-summary ava",
-    "dev": "NODE_ENV=test ava --watch",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "nyc:report": "nyc report",
-    "lint": "standard"
-  },
-  "ava": {
-    "babel": true,
-    "files": [
-      "tests/**/*-test.js",
-      "lib/**/*-test.js"
-    ]
-  },
-  "nyc": {
-    "exclude": [
-      "**/*-test.js"
-    ]
+    "test": "node --import tsx --test --enable-source-maps --experimental-test-coverage --test-reporter node-test-reporter 'src/**/*.test.ts'",
+    "test:watch": "npm run dev",
+    "dev": "node --import tsx --test --enable-source-maps --test-reporter node-test-reporter --watch 'src/**/*.test.ts' || exit 0",
+    "build": "tsc",
+    "lint": "eslint src",
+    "format": "prettier src/**/*.ts",
+    "typecheck": "tsc --noEmit --strict",
+    "verify": "npm run lint && npm run typecheck && npm test"
   },
   "engines": {
-    "node": ">= 8.6",
-    "npm": ">= 5.4"
+    "node": ">= 20"
   },
   "repository": {
     "type": "git",
@@ -37,14 +34,11 @@
     "url": "https://github.com/kjellmorten/great-uri-template/issues"
   },
   "homepage": "https://github.com/kjellmorten/great-uri-template#readme",
-  "devDependencies": {
-    "@ava/babel": "^1.0.1",
-    "ava": "^3.11.1",
-    "coveralls": "^3.1.0",
-    "nyc": "^15.1.0",
-    "standard": "^14.3.4"
-  },
   "dependencies": {
-    "date-and-time": "^0.13.1"
+    "date-and-time": "^3.6.0"
+  },
+  "devDependencies": {
+    "@integreat/ts-dev-setup": "^8.1.2",
+    "@types/node": "^22.15.16"
   }
 }

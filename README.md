@@ -11,11 +11,16 @@ format.
 [![Coverage Status](https://coveralls.io/repos/github/integreat-io/great-uri-template/badge.svg)](https://coveralls.io/github/integreat-io/great-uri-template)
 [![Dependency Status](https://dependencyci.com/github/integreat-io/great-uri-template/badge)](https://dependencyci.com/github/integreat-io/great-uri-template)
 
+> [!NOTE]
+> This package will not be developed any further, but is kept as it is still in
+> use. We update dependencies etc. from time to time, but have no plans beyond
+> that.
+
 ## Getting started
 
 ### Prerequisits
 
-Requires node v7, but has no other production dependencies.
+Requires node v22.
 
 ### Installing
 
@@ -27,7 +32,7 @@ npm install great-uri-template
 
 Example of use:
 ```
-const greatUri = require('great-uri-template')
+import greatUri from 'great-uri-template'
 
 const template = 'http://example.com/{type}/{id}{?first,max}'
 const params = {id: 'ent1', type: 'entry', first: 0, max: 20}
