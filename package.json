@@ -1,6 +1,6 @@
 {
   "name": "great-uri-template",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "URI template format for Integreat, loosely based on RFC 6570",
   "author": "Kjell-Morten Bratsberg Thorsen <post@kjellmorten.no> (http://kjellmorten.no/)",
   "license": "ISC",
