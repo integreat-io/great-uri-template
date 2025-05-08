@@ -16,7 +16,7 @@ format.
 
 ### Prerequisits
 
-Requires node v22.
+Requires node v20.
 
 ### Installing
 
